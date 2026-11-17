@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>BH BETS · Clube Privado</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Tela de Abertura (Splash Screen) - Aparece TODA VEZ que a pessoa entra ou recarrega a página -->
+  <div id="intro-overlay" class="intro-overlay" aria-live="polite">
+    <div class="intro-content">
+      <div class="intro-emblem">✦</div>
+      <p class="intro-label">PRODUÇÃO EXCLUSIVA</p>
+      <h2 class="intro-author">criado por EvertonKelvy_BH</h2>
+      <div class="intro-bar"><div class="intro-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Fundo sombrio azul-noite com elementos discretos -->
+  <div class="bg-effects" aria-hidden="true">
+    <div class="vignette"></div>
+    <div class="glow-orb"></div>
+    <span class="floating-item coin c1">$</span>
+    <span class="floating-item coin c2">$</span>
+    <span class="floating-item coin c3">$</span>
+    <span class="floating-item spark s1">✦</span>
+    <span class="floating-item spark s2">✦</span>
+  </div>
+
+  <main>
+    <header>
+      <div class="top-controls">
+        <button id="rules-toggle" class="top-btn" type="button" aria-label="Abrir tabela de prêmios">
+          ♛ Prêmios
+        </button>
+        <div class="brand-badge">
+          <h1>BH BETS</h1>
+          <p>SIMULADOR PRIVADO</p>
+        </div>
+        <button id="audio-toggle" class="top-btn" type="button" aria-label="Ativar ou silenciar som">
+          🔊 Som
+        </button>
+      </div>
+    </header>
+
+    <section class="stage">
+      <!-- Mascote Raposa Mafiosa, Séria e Sombria -->
+      <div class="mascot" id="mascot" aria-hidden="true">
+        <div class="mascot-aura"></div>
+        <svg viewBox="0 0 220 250">
+          <defs>
+            <linearGradient id="suitDark" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#132963"/>
+              <stop offset="55%" stop-color="#081230"/>
+              <stop offset="100%" stop-color="#030714"/>
+            </linearGradient>
+            <linearGradient id="foxDark" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#d4550b"/>
+              <stop offset="65%" stop-color="#9c3500"/>
+              <stop offset="100%" stop-color="#5e1d00"/>
+            </linearGradient>
+            <linearGradient id="goldDark" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffe270"/>
+              <stop offset="50%" stop-color="#c98e14"/>
+              <stop offset="100%" stop-color="#6e4800"/>
+            </linearGradient>
+            <linearGradient id="hatGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0f1d47"/>
+              <stop offset="100%" stop-color="#030612"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Escudo Sombrio de Fundo -->
+          <path d="M32 34 L110 14 L188 34 L178 158 L110 204 L42 158 Z" fill="#040b24" stroke="url(#goldDark)" stroke-width="4.5"/>
+
+          <!-- Terno Mafioso Escuro -->
+          <path d="M20 250 Q34 170 110 166 Q186 170 200 250Z" fill="url(#suitDark)" stroke="#02040d" stroke-width="2.5"/>
+          <!-- Lapelas Pontudas -->
+          <path d="M82 167 L110 228 L66 196 L74 176 Z" fill="#0d1e4d" stroke="#04091c" stroke-width="1.5"/>
+          <path d="M138 167 L110 228 L154 196 L146 176 Z" fill="#0d1e4d" stroke="#04091c" stroke-width="1.5"/>
+          <!-- Camisa e Gravata Dourada -->
+          <path d="M88 167 L110 224 L132 167Z" fill="#cfd8f0"/>
+          <polygon points="104,168 116,168 114,178 106,178" fill="url(#goldDark)"/>
+          <polygon points="106,178 114,178 118,214 110,224 102,214" fill="url(#goldDark)"/>
+          <!-- Lenço de Bolso Dourado -->
+          <polygon points="140,204 156,196 160,208" fill="url(#goldDark)"/>
+
+          <!-- Orelhas Afiadas -->
+          <path d="M46 98 L44 34 L94 68Z" fill="url(#foxDark)"/>
+          <path d="M56 84 L55 50 L80 68Z" fill="#b88463"/>
+          <path d="M174 98 L176 34 L126 68Z" fill="url(#foxDark)"/>
+          <path d="M164 84 L165 50 L140 68Z" fill="#b88463"/>
+
+          <!-- Cabeça da Raposa -->
+          <path d="M44 104 Q44 60 110 60 Q176 60 176 104 Q176 148 110 166 Q44 148 44 104Z" fill="url(#foxDark)"/>
+          <!-- Pelagem Facial Cinza-Prateada Sombria -->
+          <path d="M44 108 Q76 112 110 164 Q62 148 44 108Z" fill="#d5dce8"/>
+          <path d="M176 108 Q144 112 110 164 Q158 148 176 108Z" fill="#d5dce8"/>
+
+          <!-- Sombra Projetada pelo Chapéu Fedora -->
+          <path d="M48 84 Q110 96 172 84 L174 100 Q110 110 46 100 Z" fill="rgba(2, 5, 18, 0.55)"/>
+
+          <!-- Sobrancelhas Cerradas e Agressivas -->
+          <path d="M62 88 L98 99 M158 88 L122 99" stroke="#260b00" stroke-width="5" stroke-linecap="round"/>
+
+          <!-- Olhos Frios e Intimidadores -->
+          <g class="eyes">
+            <path d="M70 102 L96 105 Q84 113 70 102 Z" fill="url(#goldDark)" stroke="#1f0900" stroke-width="1.5"/>
+            <circle cx="84" cy="105" r="3.4" fill="#080200"/>
+            <circle cx="85" cy="104" r="1" fill="#ff4d4d"/>
+
+            <path d="M150 102 L124 105 Q136 113 150 102 Z" fill="url(#goldDark)" stroke="#1f0900" stroke-width="1.5"/>
+            <circle cx="136" cy="105" r="3.4" fill="#080200"/>
+            <circle cx="135" cy="104" r="1" fill="#ff4d4d"/>
+          </g>
+
+          <!-- Cicatriz Sutil no Focinho -->
+          <line x1="138" y1="115" x2="148" y2="124" stroke="#591c00" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- Focinho e Expressão Séria (Sem Sorriso) -->
+          <ellipse cx="110" cy="133" rx="9" ry="6.5" fill="#0d0500"/>
+          <path d="M88 148 Q110 142 132 148" fill="none" stroke="#260b00" stroke-width="3.8" stroke-linecap="round"/>
+          <path d="M98 154 L122 154" fill="none" stroke="#3d1400" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- Chapéu Fedora Mafioso -->
+          <g transform="rotate(-4 110 68)">
+            <ellipse cx="110" cy="70" rx="68" ry="12" fill="#030714" stroke="url(#goldDark)" stroke-width="1.5"/>
+            <path d="M66 70 L74 32 Q110 24 146 32 L154 70 Z" fill="url(#hatGrad)" stroke="#02040a" stroke-width="1.5"/>
+            <path d="M68 58 Q110 64 152 58 L153 66 Q110 72 67 66 Z" fill="url(#goldDark)"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Máquina Caça-Níqueis Sombria 3D -->
+      <div class="machine">
+        <div class="machine-top-bar">
+          <span>♛ BANCA ALTA &bull; 50× ♛</span>
+        </div>
+
+        <div class="msg" id="msg" aria-live="polite">Defina sua aposta e gire a roleta.</div>
+
+        <div class="reels-frame">
+          <div class="reels" id="reels"></div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <small>Banca</small>
+            <b id="bal">R$ 1.000,00</b>
+          </div>
+          <div class="stat">
+            <small>Aposta</small>
+            <b id="betv">R$ 5,00</b>
+          </div>
+          <div class="stat highlight">
+            <small>Retorno</small>
+            <b id="last">R$ 0,00</b>
+          </div>
+        </div>
+
+        <div class="ctrl">
+          <div class="bet-box">
+            <button class="round" id="minus" aria-label="Diminuir aposta">−</button>
+            <div class="bet">
+              <small>VALOR</small>
+              <b id="betc">R$ 5,00</b>
+            </div>
+            <button class="round" id="plus" aria-label="Aumentar aposta">+</button>
+          </div>
+
+          <button class="spinbtn" id="spin">GIRAR</button>
+          <button class="auto" id="auto">Auto ×10</button>
+        </div>
+
+        <button class="reset" id="reset">Restaurar banca fictícia</button>
+      </div>
+    </section>
+
+    <footer>
+      <b>Entretenimento fictício (+18).</b> Nenhum valor real é apostado ou ganho.
+    </footer>
+  </main>
+
+  <!-- Modal da Tabela de Prêmios (evita barra de rolagem vertical) -->
+  <div id="rules-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title">♛ Tabela de Pagamentos</h3>
+        <button id="rules-close" class="close-btn" type="button" aria-label="Fechar">✕</button>
+      </div>
+      <div class="pay" id="pay"></div>
+      <p>5 linhas fixas (3 horizontais e 2 diagonais). A aposta total é dividida entre as linhas. A raposa 🦊 é curinga e substitui qualquer símbolo. Três raposas pagam 50×.</p>
+    </div>
+  </div>
+
+  <script>
+    const $ = id => document.getElementById(id);
+
+    /* --- 1. Splash Screen (Aparece TODA VEZ que a pessoa entra ou dá F5 no link) --- */
+    (function initIntro() {
+      const overlay = $('intro-overlay');
+      // Sem localStorage: roda sempre que a página é carregada/acessada!
+      setTimeout(() => {
+        overlay.classList.add('fade-out');
+        setTimeout(() => overlay.remove(), 650);
+      }, 2600);
+    })();
+
+    /* --- 2. Modal de Regras / Prêmios --- */
+    const rulesModal = $('rules-modal');
+    $('rules-toggle').onclick = () => rulesModal.classList.remove('hidden');
+    $('rules-close').onclick = () => rulesModal.classList.add('hidden');
+    rulesModal.onclick = e => { if (e.target === rulesModal) rulesModal.classList.add('hidden'); };
+
+    /* --- 3. Motor de Áudio Sintetizado (Música Sombria + Som de Giro) --- */
+    const SoundEngine = (() => {
+      let ctx = null;
+      let muted = false;
+      let bgmTimer = null;
+      let step = 0;
+
+      const bassNotes = [110.00, 110.00, 130.81, 123.47, 110.00, 110.00, 146.83, 130.81];
+      const padNotes  = [220.00, 261.63, 246.94, 293.66];
+
+      function ensureCtx() {
+        if (!ctx) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          ctx = new AudioCtx();
+        }
+        if (ctx.state === 'suspended') {
+          ctx.resume();
+        }
+      }
+
+      function startBGM() {
+        ensureCtx();
+        if (bgmTimer || muted) return;
+        bgmTimer = setInterval(() => {
+          if (muted || !ctx || ctx.state !== 'running') return;
+          const now = ctx.currentTime;
+
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          const filter = ctx.createBiquadFilter();
+
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(bassNotes[step % bassNotes.length], now);
+
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(240, now);
+
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.exponentialRampToValueAtTime(0.09, now + 0.05);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.48);
+
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.5);
+
+          if (step % 2 === 0) {
+            const pad = ctx.createOscillator();
+            const padGain = ctx.createGain();
+            pad.type = 'sine';
+            pad.frequency.setValueAtTime(padNotes[(step / 2) % padNotes.length], now);
+            padGain.gain.setValueAtTime(0.001, now);
+            padGain.gain.exponentialRampToValueAtTime(0.035, now + 0.15);
+            padGain.gain.exponentialRampToValueAtTime(0.001, now + 0.95);
+            pad.connect(padGain);
+            padGain.connect(ctx.destination);
+            pad.start(now);
+            pad.stop(now + 1.0);
+          }
+
+          step++;
+        }, 520);
+      }
+
+      function playTick() {
+        if (muted) return;
+        ensureCtx();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(420 + Math.random() * 180, now);
+        osc.frequency.exponentialRampToValueAtTime(140, now + 0.045);
+
+        gain.gain.setValueAtTime(0.04, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.05);
+      }
+
+      function playStop() {
+        if (muted) return;
+        ensureCtx();
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(150, now);
+        osc.frequency.exponentialRampToValueAtTime(55, now + 0.12);
+
+        gain.gain.setValueAtTime(0.14, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.13);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.14);
+      }
+
+      function playWin() {
+        if (muted) return;
+        ensureCtx();
+        const notes = [330, 392, 493.88, 659.25];
+        notes.forEach((freq, idx) => {
+          const now = ctx.currentTime + idx * 0.09;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now);
+          gain.gain.setValueAtTime(0.09, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.36);
+        });
+      }
+
+      function toggleMute() {
+        muted = !muted;
+        if (!muted) startBGM();
+        return !muted;
+      }
+
+      ['pointerdown', 'keydown'].forEach(evt => {
+        window.addEventListener(evt, () => {
+          if (!muted) startBGM();
+        }, { once: true });
+      });
+
+      return { playTick, playStop, playWin, toggleMute, startBGM };
+    })();
+
+    $('audio-toggle').onclick = () => {
+      const active = SoundEngine.toggleMute();
+      $('audio-toggle').textContent = active ? '🔊 Som' : '🔇 Mudo';
+    };
+
+    /* --- 4. Lógica do Simulador --- */
+    const S = [
+      { e: '♠️', w: 28, m: 2 },
+      { e: '🥃', w: 22, m: 4 },
+      { e: '🎲', w: 18, m: 6 },
+      { e: '💵', w: 14, m: 10 },
+      { e: '💎', w: 9,  m: 20 },
+      { e: '🦊', w: 6,  m: 50 }
+    ];
+    const WILD = '🦊';
+    const M = Object.fromEntries(S.map(s => [s.e, s.m]));
+    const TOT = S.reduce((a, s) => a + s.w, 0);
+    const LINES = [[0,1,2], [3,4,5], [6,7,8], [0,4,8], [6,4,2]];
+    const BETS = [1, 2, 5, 10, 20, 50];
+    const START = 1000;
+
+    const R = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    const rnd = () => {
+      let r = Math.random() * TOT;
+      for (const s of S) {
+        if ((r -= s.w) < 0) return s.e;
+      }
+      return S[0].e;
+    };
+
+    let bal = START, bi = 2, busy = false, autoLeft = 0;
+    const reels = $('reels');
+    reels.innerHTML = Array.from({ length: 9 }, () => `<div class="cell">${rnd()}</div>`).join('');
+    const cells = [...reels.children];
+
+    $('pay').innerHTML = [...S].reverse().map(s =>
+      `<div><span>${s.e} ${s.e} ${s.e}</span><b>${s.m}×</b></div>`
+    ).join('');
+
+    const bet = () => BETS[bi];
+
+    function ui() {
+      $('bal').textContent = R(bal);
+      $('betv').textContent = R(bet());
+      $('betc').textContent = R(bet());
+      $('minus').disabled = busy || bi === 0;
+      $('plus').disabled = busy || bi === BETS.length - 1;
+      $('spin').disabled = busy;
+      $('reset').disabled = busy;
+      $('auto').textContent = autoLeft ? `Parar (${autoLeft})` : 'Auto ×10';
+      $('auto').classList.toggle('on', autoLeft > 0);
+      $('auto').disabled = busy && !autoLeft;
+    }
+
+    function say(t, win) {
+      const m = $('msg');
+      m.textContent = t;
+      m.classList.toggle('win', !!win);
+    }
+
+    function evaluate(g) {
+      let total = 0;
+      const hit = new Set();
+      LINES.forEach(l => {
+        const s = l.map(i => g[i]);
+        const base = s.find(x => x !== WILD) || WILD;
+        if (s.every(x => x === base || x === WILD)) {
+          total += (bet() / 5) * M[base];
+          l.forEach(i => hit.add(i));
+        }
+      });
+      return { total, hit };
+    }
+
+    async function spin() {
+      if (busy) return;
+      if (bal < bet()) {
+        autoLeft = 0;
+        say('Banca insuficiente. Reduza a aposta.');
+        ui();
+        return;
+      }
+      SoundEngine.startBGM();
+      busy = true;
+      bal -= bet();
+      $('last').textContent = R(0);
+      cells.forEach(c => c.classList.remove('win', 'land'));
+      say('Girando...');
+      ui();
+
+      const res = Array.from({ length: 9 }, rnd);
+      const going = [true, true, true];
+      cells.forEach((c, i) => going[i % 3] && c.classList.add('spin'));
+
+      const t = setInterval(() => {
+        SoundEngine.playTick();
+        cells.forEach((c, i) => {
+          if (going[i % 3]) c.textContent = rnd();
+        });
+      }, 75);
+
+      for (let col = 0; col < 3; col++) {
+        await sleep(500 + col * 300);
+        going[col] = false;
+        SoundEngine.playStop();
+        for (let r = 0; r < 3; r++) {
+          const c = cells[r * 3 + col];
+          c.textContent = res[r * 3 + col];
+          c.classList.remove('spin');
+          c.classList.add('land');
+        }
+      }
+      clearInterval(t);
+
+      const { total, hit } = evaluate(res);
+      if (total > 0) {
+        bal += total;
+        $('last').textContent = R(total);
+        hit.forEach(i => cells[i].classList.add('win'));
+        SoundEngine.playWin();
+        say(total >= bet() * 10 ? `♛ GOLPE DE MESTRE: ${R(total)}` : `Retorno da banca: ${R(total)}`, true);
+        const m = $('mascot');
+        m.classList.remove('happy');
+        void m.offsetWidth;
+        m.classList.add('happy');
+      } else {
+        say('A casa venceu desta vez.');
+      }
+
+      busy = false;
+      if (autoLeft > 0) {
+        autoLeft--;
+        ui();
+        if (autoLeft > 0) {
+          await sleep(850);
+          if (autoLeft > 0) spin();
+        }
+      }
+      ui();
+    }
+
+    $('spin').onclick = () => { autoLeft = 0; spin(); };
+    $('auto').onclick = () => { if (autoLeft) { autoLeft = 0; ui(); } else { autoLeft = 10; spin(); } };
+    $('minus').onclick = () => { if (bi > 0) { bi--; ui(); } };
+    $('plus').onclick = () => { if (bi < BETS.length - 1) { bi++; ui(); } };
+    $('reset').onclick = () => { bal = START; $('last').textContent = R(0); say('Banca fictícia restaurada.'); ui(); };
+
+    ui();
+  </script>
+</body>
+</html>
